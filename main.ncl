@@ -4,9 +4,28 @@
 	<head>
 		<regionBase>
 			<region id="rgMenuFundo" left="0" top="0" width="40%" height="100%" />
+			<region id="rgSelect1" left="35" top="140" width="30%" height="12%" />
+			<region id="rgSelect2" left="35" top="230" width="30%" height="12%" />
+			<region id="rgSelect3" left="35" top="320" width="30%" height="12%" />
+			<region id="rgSelect4" left="35" top="410" width="30%" height="12%" />
+			<region id="texto" left="45" top="500" width="30%" height="12%" />
+			<region id="video1" left="350" top="70" width="50%" height="80%" />
 		</regionBase>
+		<connectorBase>
+            <causalConnector id="onKeySelectionStart">
+                <connectorParam name="vKEY"/>
+                <simpleCondition role="onSelection" key="$vKey"/>
+                <simpleAction role="start" />
+            </causalConnector>
+        </connectorBase>
 		<descriptorBase>
-			<descriptor id="dscMenuFundo" region="rgMenuFundo" />		
+			<descriptor id="dscMenuFundo" region="rgMenuFundo" />
+			<descriptor id="dscSelect1" region="rgSelect1" focusIndex="0" moveDown="1" moveUp="3"/>	
+			<descriptor id="dscSelect2" region="rgSelect2" focusIndex="1" moveDown="2" moveUp="0"/>
+			<descriptor id="dscSelect3" region="rgSelect3" focusIndex="2" moveDown="3" moveUp="1"/>
+			<descriptor id="dscSelect4" region="rgSelect4" focusIndex="3" moveUp="2" moveDown="0"/>	
+			<descriptor id="dscTexto" region="texto"/>
+			<descriptor id="dscVideo1" region="video1"/>
 		</descriptorBase>
 	</head>
 
@@ -15,6 +34,30 @@
 		<context id="ctxMenu">
 			<port id="pMenuFundo" component="menuFundo"/>
 			<media id="menuFundo" src="media/imagens/menufundo.png" descriptor="dscMenuFundo"/>
+			
+			<port id="pSelect1" component="Select1"/>
+			<media id="Select1" src="media/imagens/central.png" descriptor="dscSelect1"/>
+
+			<port id="pSelect2" component="Select2"/>
+			<media id="Select2" src="media/imagens/estudantina.png" descriptor="dscSelect2"/>
+
+			<port id="pSelect3" component="Select3"/>
+			<media id="Select3" src="media/imagens/jardimbotanico.png" descriptor="dscSelect3"/>
+
+			<port id="pSelect4" component="Select4"/>
+			<media id="Select4" src="media/imagens/outras.png" descriptor="dscSelect4"/>
+
+			<port id="pTexto" component="Texto"/>
+			<media id="Texto" src="media/textos/todos.txt" descriptor="dscTexto"/>
 		</context>
+		
+		<media id="Video1" src="media/videos/C2.mp4" descriptor="dscVideo1"/>
+
+		<link xconnector="onKeySelectionStart">
+            <bind role="onSelection" component="Select1">
+            	<bindParam name="vKey" value="RED"/>
+            </bind> 
+            <bind role="start" component="Video1"/>
+        </link> 
 	</body>
 </ncl>
