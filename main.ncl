@@ -18,16 +18,7 @@
 			<region id="video" left="350" top="70" width="50%" height="80%" />
 		</regionBase>
 		<connectorBase>
-            <causalConnector id="onKeySelectionStartStop">
-				<connectorParam name="vKey" />
-				<simpleCondition role="onSelection" key="$vKey" />
-				<compoundAction operator="par">
-					<simpleAction role="start"/>
-					<simpleAction role="stop"/>
-				</compoundAction>
-			</causalConnector>
 			<causalConnector id="onSelectStopStart">
-				<connectorParam name="var"/>
 				<simpleCondition role="onSelection" qualifier="or" max="unbounded"/>
 				<compoundAction operator="seq">
 					<simpleAction role="stop"/>
@@ -72,12 +63,20 @@
 			<bindRule constituent="Video2" rule="rVideo2"/>
 			<bindRule constituent="Video3" rule="rVideo3"/>
 			<bindRule constituent="Video4" rule="rVideo4"/>
-			<media id="Video1" src="media/videos/C2.mp4" descriptor="dscVideo"/>
-			<media id="Video2" src="media/videos/E1.mp4" descriptor="dscVideo"/>
-			<media id="Video3" src="media/videos/E2.mp4" descriptor="dscVideo"/>
-			<media id="Video4" src="media/videos/C3.mp4" descriptor="dscVideo"/>
+			<media id="Video1" src="media/videos/C2.mp4" descriptor="dscVideo">
+				<area id="aVideo1" end="60s"/>
+			</media>
+			<media id="Video2" src="media/videos/E1.mp4" descriptor="dscVideo">
+				<area id="aVideo2" end="60s"/>
+			</media>
+			<media id="Video3" src="media/videos/E2.mp4" descriptor="dscVideo">
+				<area id="aVideo3" end="106s"/>
+			</media>
+			<media id="Video4" src="media/videos/C3.mp4" descriptor="dscVideo">
+				<area id="aVideo4" end="88s"/>
+			</media>
       	</switch>
-      	<link id="lOthers" xconnector="onSelectStopStart">
+      	<link id="lVideos" xconnector="onSelectStopStart">
 			<bind role="onSelection" component="Select1"/>
 			<bind role="onSelection" component="Select2"/>
 			<bind role="onSelection" component="Select3"/>
