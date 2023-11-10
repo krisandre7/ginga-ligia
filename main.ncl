@@ -26,19 +26,10 @@
 					<simpleAction role="stop"/>
 				</compoundAction>
 			</causalConnector>
-			<causalConnector id="onSelectionSet_varStop">
-				<connectorParam name="var"/>
-				<simpleCondition role="onSelection"/>
-				<compoundAction operator="seq">
-					<!-- <simpleAction role="set" value="$var" max="unbounded" qualifier="par"/> -->
-					<simpleAction role="stop"/>
-				</compoundAction>
-			</causalConnector>
 			<causalConnector id="onSelection_orSet_varStopStart">
 				<connectorParam name="var"/>
 				<simpleCondition role="onSelection" qualifier="or" max="unbounded"/>
 				<compoundAction operator="seq">
-					<!-- <simpleAction role="set" value="$var" max="unbounded" qualifier="par"/> -->
 					<simpleAction role="stop"/>
 					<simpleAction role="start"/>
 				</compoundAction>
@@ -74,26 +65,23 @@
 		<port id="pTexto" component="Texto"/>
 		<media id="Texto" src="media/textos/todos.txt" descriptor="dscTexto"/>
 		
-		<switch id="musics">
+		<switch id="videoSwitch">
 		<bindRule constituent="Video1" rule="rVideo1"/>
 			<bindRule constituent="Video2" rule="rVideo2"/>
 			<bindRule constituent="Video3" rule="rVideo3"/>
 			<bindRule constituent="Video4" rule="rVideo4"/>
 			<media id="Video1" src="media/videos/C2.mp4" descriptor="dscVideo"/>
-			<media id="Video2" src="media/videos/C3.mp4" descriptor="dscVideo"/>
-			<media id="Video3" src="media/videos/E1.mp4" descriptor="dscVideo"/>
-			<media id="Video4" src="media/videos/E2.mp4" descriptor="dscVideo"/>
+			<media id="Video2" src="media/videos/E1.mp4" descriptor="dscVideo"/>
+			<media id="Video3" src="media/videos/E2.mp4" descriptor="dscVideo"/>
+			<media id="Video4" src="media/videos/C3.mp4" descriptor="dscVideo"/>
       	</switch>
       	<link id="lOthers" xconnector="onSelection_orSet_varStopStart">
 			<bind role="onSelection" component="Select1"/>
 			<bind role="onSelection" component="Select2"/>
 			<bind role="onSelection" component="Select3"/>
 			<bind role="onSelection" component="Select4"/>
-			<!-- <bind role="set" component="Video1" interface="soundLevel">
-				<bindParam name="var" value="0"/>
-			</bind> -->
-			<bind role="stop" component="musics"/>
-			<bind role="start" component="musics"/>
+			<bind role="stop" component="videoSwitch"/>
+			<bind role="start" component="videoSwitch"/>
       	</link>
 	</body>
 </ncl>
