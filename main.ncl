@@ -26,7 +26,7 @@
 					<simpleAction role="stop"/>
 				</compoundAction>
 			</causalConnector>
-			<causalConnector id="onSelection_orSet_varStopStart">
+			<causalConnector id="onSelectStopStart">
 				<connectorParam name="var"/>
 				<simpleCondition role="onSelection" qualifier="or" max="unbounded"/>
 				<compoundAction operator="seq">
@@ -63,7 +63,9 @@
 		<media id="Select4" src="media/imagens/outras.png" descriptor="dscSelect4"/>
 
 		<port id="pTexto" component="Texto"/>
-		<media id="Texto" src="media/textos/todos.txt" descriptor="dscTexto"/>
+		<media id="Texto" src="media/textos/todos.txt" descriptor="dscTexto">
+			<property name="fontColor" value="blue"/>
+		</media>
 		
 		<switch id="videoSwitch">
 		<bindRule constituent="Video1" rule="rVideo1"/>
@@ -75,7 +77,7 @@
 			<media id="Video3" src="media/videos/E2.mp4" descriptor="dscVideo"/>
 			<media id="Video4" src="media/videos/C3.mp4" descriptor="dscVideo"/>
       	</switch>
-      	<link id="lOthers" xconnector="onSelection_orSet_varStopStart">
+      	<link id="lOthers" xconnector="onSelectStopStart">
 			<bind role="onSelection" component="Select1"/>
 			<bind role="onSelection" component="Select2"/>
 			<bind role="onSelection" component="Select3"/>
