@@ -67,7 +67,7 @@
 					</assessmentStatement>
 				</compoundCondition>
 				<compoundAction operator="seq">
-					<simpleAction role="set" value="$var"/>
+					<simpleAction role="set" value="$var" max="unbounded" qualifier="par"/>
 					<simpleAction role="stop" max="unbounded" qualifier="par"/>
 					<simpleAction role="start"/>	
 				</compoundAction>
@@ -220,6 +220,18 @@
 			<bind role="testIfTrue" component="settings" interface="carouselMode"/>
 			<bind role="set" component="settings" interface="service.currentFocus">
 				<bindParam name="var" value="1"/>
+			</bind>
+			<bind role="set" component="Video1" interface="explicitDur">
+				<bindParam name="var" value="20s"/>
+			</bind>
+			<bind role="set" component="Video2" interface="explicitDur">
+				<bindParam name="var" value="20s"/>
+			</bind>
+			<bind role="set" component="Video3" interface="explicitDur">
+				<bindParam name="var" value="20s"/>
+			</bind>
+			<bind role="set" component="Video4" interface="explicitDur">
+				<bindParam name="var" value="20s"/>
 			</bind>
 			<bind role="stop" component="Video1"/>
 			<bind role="stop" component="Video2"/>
